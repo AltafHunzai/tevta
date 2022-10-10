@@ -22,9 +22,9 @@ class HomeController extends Controller
             if (Auth::user()->usertype == '0') {
 
                 $event = event::all();
-                return view('user.home', compact('event'));
+                return view('user.index', compact('event'));
             } else {
-                return view('admin.home');
+                return view('admin.index');
             }
         } else {
             return redirect()->back();
@@ -35,11 +35,11 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::id()) {
-            return redirect('home');
+            return redirect('index');
         } else {
             $event = event::all();
 
-            return view('user.home', compact('event'));
+            return view('user.index', compact('event'));
         }
     }
 
